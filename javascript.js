@@ -1,15 +1,18 @@
-const arrayOfChoices = ["paper", "rock", "scissor"];
-const rock = "rock";
-const scissor = "scissor";
-const paper = "paper";
+const ARRAY_OF_CHOICES = ["paper", "rock", "scissor"];
+const ROCK = "rock";
+const SCISSOR = "scissor";
+const PAPER = "paper";
+const PLAYER_CHOICE = "Player choice is: ";
+
 // BUTTONS
 const rockBtn = document.querySelector("#rockBtn");
 const paperkBtn = document.querySelector("#paperBtn");
 const scissorkBtn = document.querySelector("#scissorBtn");
+const cleanScoreBtn = document.querySelector("#cleanScoreBtn");
 // TEXT TO PAGE
-const actualScore = document.querySelector("#actualScore");
 const playerChoice = document.querySelector("#playerChoice");
 const compChoice = document.querySelector("#compChoice");
+const actualScore = document.querySelector("#actualScore");
 const setResult = document.querySelector("#setResult");
 const finalresult = document.querySelector("#finalresult");
 
@@ -19,145 +22,110 @@ let playerSets = 0;
 let computerSets = 0;
 let setsCounter = 0;
 
-console.log("play: "+ playerSets+"comp choice: "+computerSets);
-
 rockBtn.addEventListener('click', ()=>{
-    playerChoice.textContent = "player choice is: "+rock;
-    game(rock, getComputerChoice());
+    playerChoice.textContent = PLAYER_CHOICE+ROCK;
+    game(ROCK, getComputerChoice());
 });
 
 paperkBtn.addEventListener('click', ()=>{
-    playerChoice.textContent = "player choice is: "+paper;
-    game(paper, getComputerChoice());
+    playerChoice.textContent = PLAYER_CHOICE+PAPER;
+    game(PAPER, getComputerChoice());
 });
 
 scissorkBtn.addEventListener('click', ()=>{
-    playerChoice.textContent = "player choice is: "+scissor;
-    game(scissor, getComputerChoice());
+    playerChoice.textContent = PLAYER_CHOICE+SCISSOR;
+    game(SCISSOR, getComputerChoice());
 });
 
-
+cleanScoreBtn.addEventListener('click', ()=>{
+    finalresult.textContent ='';
+    playerSets = 0;
+    computerSets = 0;
+    setsCounter = 0;
+     
+    playerChoice.textContent = 'Player choice'; 
+    compChoice.textContent = 'Computer Choice?'; 
+    actualScore.textContent = 'Player Choice';
+    setResult.textContent = 'Last Set Result'; 
+    finalresult.textContent = 'Final Result'; 
+});
 
 
 function playRound(playerSelection, computerSelection) {
     let result = "";
     switch (playerSelection) {
-        case rock:
+        case ROCK:
             switch (computerSelection) {
-                case rock:
+                case ROCK:
                     result = "You Draw! Rock equals Rock";
                     break;
-                case paper:
+                case PAPER:
                     result = "You Lose! Paper beats Rock";
                     break;
-                case scissor:
+                case SCISSOR:
                     result = "You Won! Scissor beats Rock";
                     break;
-                default:
-                    result = "not valid";
-                    break;
             }
             break;
-        case paper:
+        case PAPER:
             switch (computerSelection) {
-                case rock:
+                case ROCK:
                     result = "You Won! Paper beats Rock";
                     break;
-                case paper:
+                case PAPER:
                     result = "You Draw! Paper equals Paper";
                     break;
-                case scissor:
+                case SCISSOR:
                     result = "You Lose! Scissor beats Paper";
                     break;
-                default:
-                    result = "not valid";
-                    break;
             }
             break;
-        case scissor:
+        case SCISSOR:
             switch (computerSelection) {
-                case rock:
+                case ROCK:
                     result = "You Lose! Rock beats Scissor";
                     break;
-                case paper:
+                case PAPER:
                     result = "You Won! Scissor beats Paper";
                     break;
-                case scissor:
+                case SCISSOR:
                     result = "You Draw! Scissor equals Scissor";
                     break;
-                default:
-                    result = "not valid";
-                    break;
             }
-            break;
-    
-    
-        default:
-            result = "not valid";
             break;
     }
     return result;
   }
 
   function game(playerSelection, computerSelection){
-
-    
-    // let playerSets = 0;
-    // let computerSets = 0;
-    // while (playerSets < 5 && computerSets < 5) {
+    if (playerSets == 5 || computerSets == 5) {
+        finalresult.textContent ='';
+        playerSets = 0;
+        computerSets = 0;
+        setsCounter = 0;
+    }
+    const whoWon = "Last set result is: "+playRound(playerSelection, computerSelection);
         
-        //console.log("player sets are: "+playerSets+", computer sets are: "+computerSets);
-         const whoWon = playRound(playerSelection, computerSelection);
-         
-        if (whoWon.includes("Won")) {
-            playerSets = playerSets+1;
-            //console.log("player won: "+playerSets+" sets");
-        } else if (whoWon.includes("Lose")) {
-            computerSets = computerSets+1;
-            //console.log("computer won: "+computerSets+" sets");
-        }
-        setResult.textContent = whoWon;
-        actualScore.textContent = "player sets are: "+playerSets+
-        ", computer sets are: "+computerSets+ "total sets are: "+ ++setsCounter;
-        // else{
-            // not valid result, continuing the game if the player enters a bad string
-            // continue;
-        // }
-        // if(playerSets == 5 || computerSets == 5){
-        //     break;
-        // }    
-    // }
+    if (whoWon.includes("Won")) {
+        playerSets = playerSets+1;
+    } else if (whoWon.includes("Lose")) {
+        computerSets = computerSets+1;
+    }
+    setResult.textContent = whoWon;
+    actualScore.textContent = "Player won sets are: "+playerSets+", Computer won sets are: "+computerSets+ ", Total played sets are: "+ ++setsCounter;
+
     if (playerSets == 5) {
         finalresult.textContent = "You are the most lucky man out there";
-        playerSets = 0;
-        computerSets = 0;
-        setsCounter = 0;
-        finalresult.textContent ='';
-        //console.log("You are the most lucky man out there");
     } else if (computerSets == 5){
         finalresult.textContent = "You are almost the luckiest men out there, but not today";
-        playerSets = 0;
-        computerSets = 0;
-        setsCounter = 0;
-        finalresult.textContent = '';
-        //console.log("You are almost the luckiest men out there, but not today");
     }
-    
-    
+
   }
-/* function getPlayerChoice(){
-    const playerChoice = prompt("choose your option");
-    const pSel = playerChoice.toLowerCase();
-    playerChoice.textContent = "player choice is: "+pSel;
-    //console.log("player choice is: "+pSel)
-} */
 
  function getComputerChoice(){
-   
-     const randomIndex = Math.floor(Math.random()*arrayOfChoices.length);
-     const computerChoice = arrayOfChoices[randomIndex];
-     compChoice.textContent = "computer choice is: "+computerChoice;
-     //console.log("computer choice is: "+computerChoice);
+     const randomIndex = Math.floor(Math.random()*ARRAY_OF_CHOICES.length);
+     const computerChoice = ARRAY_OF_CHOICES[randomIndex];
+     compChoice.textContent = "Computer choice is: "+computerChoice;
      return computerChoice;
  }
   
