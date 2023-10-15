@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock scissor paper</title>
+    <link rel="stylesheet" href="stylesheet.css">
     <script src="javascript.js" defer></script>
 </head>
 
 <body>
-    <div>
-        <button id="rockBtn">Rock</button>
-        <button id="paperBtn">Paper</button>
-        <button id="scissorBtn">Scissor</button>
-    </div>
-    <div>
-        <p id="playerChoice">Player Choice</p>
-        <p id="compChoice">Computer Choice?</p>
-        <p id="actualScore">Actual Score</p>
-        <p id="setResult">Last Set Result</p>
-        <p id="finalresult">Final Result</p>
-        <button id="cleanScoreBtn">Clean Records</button>
+    <header>
+        <h1>ROCK PAPER SCISSOR</h1>
+        <h2>Welcome happy traveler: have a try with your luck!</h2>
+        <p>To start the game press any of three icons. First to score 5 sets wins the match.</p>
+    </header>
+    <div id="icons">
+            <button id="rockBtn">Rock</button>
+            <button id="paperBtn">Paper</button>
+            <button id="scissorBtn">Scissor</button> 
         
     </div>
+    <div id="score">
+        <div id="choices">
+            <p id="playerChoice">Player Choice</p>
+            <p id="compChoice">Computer Choice?</p>
+        </div>
+        <p id="actualScore">Actual Score</p>
+        <div id="results">
+            <p id="setResult">Last Set Result</p>
+            <p id="finalresult">Final Result</p>
+        </div>
+        
+        <button id="cleanScoreBtn">Start New Game</button>
+        
+    </div>
+    <footer>
+        <span>Copyright Odin project 2023</span>
+    </footer>
     
 </body>
 </html>

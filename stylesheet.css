@@ -1,0 +1,46 @@
+/* body{
+    background-color: grey;
+    color: aliceblue;
+} */
+
+header {
+    text-align: center;
+    
+}
+
+#icons{
+    display: flex;
+    justify-content: center;
+    margin: 7em;
+    gap: 8em;
+
+}
+
+#icons button{
+    padding: 5em;
+    border-style: none;
+}
+
+#score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+
+#choices{
+    display: flex;
+    gap: 20em;
+}
+
+#results{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+footer{
+    text-align: center;
+    margin: 5em;
+    font-size: large;
+}
