@@ -5,10 +5,10 @@
 
 header {
     text-align: center;
-    
+
 }
 
-#icons{
+#icons {
     display: flex;
     justify-content: center;
     margin: 7em;
@@ -16,30 +16,36 @@ header {
 
 }
 
-#icons button{
-    padding: 5em;
+#icons button {
+
     border-style: none;
 }
 
-#score{
+#game {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5em;
 }
 
-#choices{
+/* #choices {
     display: flex;
-    gap: 20em;
+    justify-content: space-between;
+    margin: 7em;
+} */
+
+#score, #choices {
+    display: flex;
+    justify-content: center;
+    gap: 30em;
+    margin: 3em;
 }
 
-#results{
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+#results {
+    text-align: center;
 }
 
-footer{
+footer {
     text-align: center;
     margin: 5em;
     font-size: large;

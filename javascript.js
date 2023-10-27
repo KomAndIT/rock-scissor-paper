@@ -2,7 +2,6 @@ const ARRAY_OF_CHOICES = ["paper", "rock", "scissor"];
 const ROCK = "rock";
 const SCISSOR = "scissor";
 const PAPER = "paper";
-const PLAYER_CHOICE = "Player choice is: ";
 
 // BUTTONS
 const rockBtn = document.querySelector("#rockBtn");
@@ -12,42 +11,41 @@ const cleanScoreBtn = document.querySelector("#cleanScoreBtn");
 // TEXT TO PAGE
 const playerChoice = document.querySelector("#playerChoice");
 const compChoice = document.querySelector("#compChoice");
-const actualScore = document.querySelector("#actualScore");
+const playerScore = document.querySelector("#playerScore");
+const computerScore = document.querySelector("#compScore");
 const setResult = document.querySelector("#setResult");
-const finalresult = document.querySelector("#finalresult");
+const finalresult = document.querySelector("#finalResult");
 
 console.log("Start game");
-
 let playerSets = 0;
 let computerSets = 0;
 let setsCounter = 0;
 
-rockBtn.addEventListener('click', ()=>{
-    playerChoice.textContent = PLAYER_CHOICE+ROCK;
+rockBtn.addEventListener('click', () => {
+    playerChoice.textContent = ROCK;
     game(ROCK, getComputerChoice());
 });
 
-paperkBtn.addEventListener('click', ()=>{
-    playerChoice.textContent = PLAYER_CHOICE+PAPER;
+paperkBtn.addEventListener('click', () => {
+    playerChoice.textContent = PAPER;
     game(PAPER, getComputerChoice());
 });
 
-scissorkBtn.addEventListener('click', ()=>{
-    playerChoice.textContent = PLAYER_CHOICE+SCISSOR;
+scissorkBtn.addEventListener('click', () => {
+    playerChoice.textContent = SCISSOR;
     game(SCISSOR, getComputerChoice());
 });
 
-cleanScoreBtn.addEventListener('click', ()=>{
-    finalresult.textContent ='';
+cleanScoreBtn.addEventListener('click', () => {
+    playerChoice.textContent = '';
+    compChoice.textContent = "";
+    playerScore.textContent = "";
+    computerScore.textContent = "";
+    finalresult.textContent = "";
+    setResult.textContent = "";
     playerSets = 0;
     computerSets = 0;
     setsCounter = 0;
-     
-    playerChoice.textContent = 'Player choice'; 
-    compChoice.textContent = 'Computer Choice?'; 
-    actualScore.textContent = 'Player Choice';
-    setResult.textContent = 'Last Set Result'; 
-    finalresult.textContent = 'Final Result'; 
 });
 
 
@@ -95,38 +93,45 @@ function playRound(playerSelection, computerSelection) {
             break;
     }
     return result;
-  }
+}
 
-  function game(playerSelection, computerSelection){
+function game(playerSelection, computerSelection) {
     if (playerSets == 5 || computerSets == 5) {
-        finalresult.textContent ='';
+        finalresult.textContent = "";
         playerSets = 0;
         computerSets = 0;
         setsCounter = 0;
     }
-    const whoWon = "Last set result is: "+playRound(playerSelection, computerSelection);
-        
+    const whoWon = "Last set result is: " + playRound(playerSelection, computerSelection);
+
     if (whoWon.includes("Won")) {
-        playerSets = playerSets+1;
+        playerSets = playerSets + 1;
     } else if (whoWon.includes("Lose")) {
-        computerSets = computerSets+1;
+        computerSets = computerSets + 1;
     }
     setResult.textContent = whoWon;
-    actualScore.textContent = "Player won sets are: "+playerSets+", Computer won sets are: "+computerSets+ ", Total played sets are: "+ ++setsCounter;
-
+    playerScore.textContent = playerSets;
+    computerScore.textContent = computerSets;
+    //insert function for pop up of the winner
     if (playerSets == 5) {
-        finalresult.textContent = "You are the most lucky man out there";
-    } else if (computerSets == 5){
-        finalresult.textContent = "You are almost the luckiest men out there, but not today";
+        declareWinner("You are the most lucky man out there");
+    } else if (computerSets == 5) {
+        declareWinner("You are almost the luckiest men out there, but not today");
     }
 
-  }
+}
 
- function getComputerChoice(){
-     const randomIndex = Math.floor(Math.random()*ARRAY_OF_CHOICES.length);
-     const computerChoice = ARRAY_OF_CHOICES[randomIndex];
-     compChoice.textContent = "Computer choice is: "+computerChoice;
-     return computerChoice;
- }
-  
+function declareWinner(winnerText) {
+    console.log("wtf");
+    finalresult.textContent = winnerText;
+
+}
+
+function getComputerChoice() {
+    const randomIndex = Math.floor(Math.random() * ARRAY_OF_CHOICES.length);
+    const computerChoice = ARRAY_OF_CHOICES[randomIndex];
+    compChoice.textContent = computerChoice;
+    return computerChoice;
+}
+
 
