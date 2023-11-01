@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock scissor paper</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="fonts.css">
     <script src="javascript.js" defer></script>
 </head>
 
 <body>
     <header>
-        <h1>ROCK PAPER SCISSOR</h1>
-        <h2>Welcome happy traveler: have a try with your luck!</h2>
-        <p>To start the game press any of three icons. First to score 5 sets wins the match.</p>
+        <h1 id="title">ROCK PAPER SCISSOR</h1>
+        <h2 id="welcome">Welcome happy traveler: have a try with your luck!</h2>
+        <p id="rules">To start the game press any of three icons. First to score five sets wins the match.</p>
     </header>
     <div id="icons">
-            <button id="rockBtn"><img src="rock.png" alt="rock"></button>
-            <button id="paperBtn"><img src="paper.png" alt="paper"></button>
-            <button id="scissorBtn"><img src="scissor.png" alt="scissor"></button> 
-        
+        <button id="rockBtn"><img src="rock_png.png" alt="rock"></button>
+        <button id="paperBtn"><img src="pngegg.png" alt="paper"></button>
+        <button id="scissorBtn"><img src="scisor_png.png" alt="scissor"></button>
+
     </div>
     <div id="game">
         <div id="choices">
-            <span>Player Choice:  <span id="playerChoice"></span></span>
-            <span>Computer Choice:  <span id="compChoice"></span></span>
+            <div>
+                <span class="board">Player Choice: </span><span id="playerChoice" class="board"></span>
+            </div>
+            <div>
+                <span class="board">Computer Choice: </span><span id="compChoice" class="board"></span>
+            </div>
+
         </div>
         <div id="score">
-            <p>Player score: <span id="playerScore"></span></p>
-            <p>Computer Score: <span id="compScore"></span></p>
+            <div>
+                <span class="board">Player score: </span><span id="playerScore" class="board"></span>
+            </div>
+
+            <div>
+                <span class="board">Computer Score: </span><span id="compScore" class="board"></span>
+            </div>
+
         </div>
         <div id="results">
-            <p id="setResult"></p>
-            <p id="finalResult"></p>
+            <span id="setResult" class="board"></span>
+            <span id="finalResult" class="board"></span>
         </div>
-        
+
         <button id="cleanScoreBtn">Start New Game</button>
-        
+
     </div>
     <footer>
         <span>Copyright Odin project 2023</span>
     </footer>
-    
+
 </body>
+
 </html>

@@ -1,31 +1,86 @@
-/* body{
-    background-color: grey;
-    color: aliceblue;
-} */
+body{
+    background-color: #6495ED;
+    margin: 0em;
+    display: flex;
+    flex-direction: column;
+}
+
+#title {
+    font-family: cannet_title, 'Courier New', Courier, monospace;
+    font-size: 3em;
+    font-weight: lighter;
+    color: #FFA500;
+    
+}
+
+#welcome {
+    font-family: cyber_punk;
+    font-size: 2em;
+    font-weight: lighter;
+    display: inline;
+    
+}
+
+#rules {
+    font-family: streamer;
+    font-size:2em;
+    color: #FFA500;
+    
+    
+}
+
+.board{
+    font-family: cyber_game;
+    font-size: 3.5em;
+    font-weight: lighter; 
+}
 
 header {
     text-align: center;
+    background-color: grey;
+    height: 17em;
 
 }
 
 #icons {
     display: flex;
     justify-content: center;
-    margin: 7em;
-    gap: 8em;
+    margin-top: 7em;
+    gap: 12.5em;
+    
 
 }
 
 #icons button {
-
-    border-style: none;
+    border-style: solid;
+    border-color: #FFA500;
+    border-radius: 2em;
+    border-width: 0.4em;
+    padding: 0%;
+    background-color: #6495ED;
+    height:20em;
+    width: 20em;
 }
+
+#icons button img {
+    height: 100%
+}
+
+
 
 #game {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5em;
+    margin-top: 5em;
+    gap: 3.5em;
+}
+
+#game button{
+    background-color: grey;
+    color: #FFA500;
+    font-size: 3.5em;
+    border-radius: 0.5em;
 }
 
 /* #choices {
@@ -34,11 +89,12 @@ header {
     margin: 7em;
 } */
 
-#score, #choices {
+#score,
+#choices {
     display: flex;
     justify-content: center;
-    gap: 30em;
-    margin: 3em;
+    gap: 25em;
+    /* margin: 3em; */
 }
 
 #results {
@@ -47,6 +103,8 @@ header {
 
 footer {
     text-align: center;
-    margin: 5em;
+    margin-top: 5em;
+    margin-bottom: 0%;
     font-size: large;
+    background-color: darkgrey;
 }
